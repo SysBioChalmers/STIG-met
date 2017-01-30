@@ -6,7 +6,7 @@ addpath('sourceCode')
 addpath('data')
 global constants
 constants = loadConstants();
-parsimonious = true;
+parsimonious = false;
 
 referenceData = makeReferenceObject('referenceData/weightBoy.txt', 'referenceData/multiCenterData.txt', 'referenceData/zScoreBoy.txt', 'referenceData/heightBoy.txt', 'referenceData/zScoreBoyHeight.txt');
 referenceState = makeReferenceObject('referenceData/state/weightInterpolation.txt', 'referenceData/state/fatInterpolation.txt');
