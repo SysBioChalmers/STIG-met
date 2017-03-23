@@ -35,8 +35,8 @@ function FBASolution = runFBA(model, rxnIndx, metabolitesIn, maintenance, growth
     catbolismFunction = 'human_fatmassExport';
     catabolismSource = 'human_TGPool';
     
-    fatIndex = findIndex(model.rxns, 'human_fatmassTransp');
-    leanIndex= findIndex(model.rxns, 'human_leanmassTransp');
+    fatIndex = findIndex(model.rxns, 'human_fatmass');
+    leanIndex= findIndex(model.rxns, 'human_leanmass');
     
     
     model = configureBiomassEquation(model, objectiveFunction, fatRatio, growthRelMaintenance);
