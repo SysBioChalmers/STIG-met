@@ -37,6 +37,7 @@ global constants
     food = food/dryWeight;
     maintenance = maintenance/dryWeight; %from mol ATP to ATP/kgdw.
     FBASolution = runFBA(model, rxnIndx, food, maintenance, growthRelatedMaintenance, fatRatio, parsimonious, constrainedFluxes);
+        
     fatGain = dryWeight * FBASolution.fatGrowth * 1000;
     leanGain = dryWeight * FBASolution.leanGrowth * constants.proteinLeanFactor * 1000;
     solution.x = FBASolution.x;

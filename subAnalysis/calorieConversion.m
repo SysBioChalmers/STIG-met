@@ -36,6 +36,7 @@ values = solution.x(model.exchangeRxns);
 %values(values<-0.00000001)
 %model.rxns(model.exchangeRxns(values<-0.000001))
 
+
 answer = solution.f * -1;
 
 1000/answer 
@@ -51,7 +52,7 @@ labels = {
 };
 
 model.foodRxns = getBounds(model, labels);
-food = [1000/(256.4 * 9), 10];
+food = [1000/(256.4 * 8.8), 10];
 
 approxValue = 1000;
 
@@ -68,6 +69,8 @@ model = setParam(model, 'obj', objectiveFunction, 1);
 
 model = setParam(model, 'lb', objectiveFunction, 0);
 model = setParam(model, 'ub', objectiveFunction, 1000);    
+
+PO = -solution.f/(2*solution.x(reactionNumbers(2)));
 
 solution = solveLP(model, 1);
 solution

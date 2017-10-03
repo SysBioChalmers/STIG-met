@@ -62,8 +62,8 @@ function simulationResults = runSimulation(individual, simSettings, foodModel, r
         growthRelMaintenance = estimateGrowthMaintenance(fatRatio, individual);
         
         solution = normalizeAndRunFBA(simSettings.model, foodModel.rxnIndx, food, sum(maintenance), growthRelMaintenance, fatRatio, curFat, curWeight, simSettings.parsimonious, individual.constrainedFluxes);
-        
 
+        
         curFat = curFat + simSettings.timeStep * solution.fatGain;
         curWeight = curWeight + simSettings.timeStep * (solution.fatGain + solution.leanGain);
             

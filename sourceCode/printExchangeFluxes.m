@@ -9,6 +9,7 @@ function printExchangeFluxes(model, growthRates, fullSolution)
 %
 %   Avlant Nilsson, 2016-05-17
 %
+fluxThresh = 10 ^-6;
 for i=1:length(model.rxns)
    if sum(abs(fullSolution(:,i))) > fluxThresh
        eq = constructEquations(model, i);
