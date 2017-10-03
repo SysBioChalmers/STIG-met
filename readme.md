@@ -41,14 +41,11 @@ This repository is administered by name @avlant, Division of Systems and Synthet
   * You need a functional Matlab installation of **Matlab_R_2015_b** (MATLAB 7.3 and higher)
   * The [RAVEN](https://github.com/SysBioChalmers/RAVEN) toolbox for MATLAB. Add the directory to your Matlab path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
 
-### Dependencies - Recommended Software:
-* libSBML MATLAB API (version [5.13.0](https://sourceforge.net/projects/sbml/files/libsbml/5.13.0/stable/MATLAB%20interface/)  is recommended).
+### Run
+To reproduce figure 1 run main.m. For other figures run main[name of simulation].m
 
-
-### Installation Instructions
-* Clone [model](https://github.com/SysBioChalmers/) branch from [SysBioChalmers GitHub](https://github.com/SysBioChalmers)
-* Add the directory to your Matlab path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
-
+### Aditional information
+For a visual guide to the structure of the simulation toolbox, view readme.pptx
 
 
 ## License
