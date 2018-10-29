@@ -28,8 +28,9 @@ function solution = solveLin(model, silent)
     prob.bux = model.ub;
 
     params.MSK_IPAR_OPTIMIZER='MSK_OPTIMIZER_FREE_SIMPLEX';
-    [crap,res] = mosekopt('minimize echo(0)',prob,getMILPParams(params));
-    
+    %[crap,res] = mosekopt('minimize echo(0)',prob,getMILPParams(params));
+    [crap,res] = mosekopt('minimize echo(0)',prob, params);    
+
     if not(silent)
         disp(res.sol.bas)
     end
