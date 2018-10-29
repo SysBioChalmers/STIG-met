@@ -87,36 +87,40 @@ end
 
 function plotGrowthCurve(simulationResults, referenceData, simSettings)
 hold all
-legendValues=[];
-for i = 1:length(simulationResults)
-    timePoints = simulationResults{i}.timePoints;
-    weights = simulationResults{i}.weight;
-    timePoints = [simulationResults{i}.individual.age timePoints];   
-    weights = [simulationResults{i}.individual.weight; weights];
-    legendValues{i} = simulationResults{i}.individual.name;
-    plot(timePoints/30.4, weights, 'linewidth', 3)
-end
-legendValues{i+1} = 'Reference Data';
-%Reference
-
+%Reference data
 childData = referenceData.weight;
 time = childData(:,1)/30.4;
 childData(:,2:end) = 1000 * childData(:,2:end);
 
 greyColor = [0.5 0.5 0.5];
-plot(time, childData(:, 2), 'Color', greyColor)
-plot(time, childData(:, 3), 'Color', greyColor)
-plot(time, childData(:, 4), 'Color', greyColor)
-plot(time, childData(:, 5), 'Color', greyColor)
-plot(time, childData(:, 6), 'Color', greyColor)
+%greyColor2 = [0.6 0.6 0.6];
 
+xvals = [time; flip(time)];
+yvals = [childData(:, 2); flip(childData(:, 6))];
+fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3)
+
+yvals = [childData(:, 3); flip(childData(:, 5))];
+fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
+plot(time, childData(:, 4), 'Color', greyColor, 'linewidth', 2, 'HandleVisibility','off')
+
+%Plot data
+legendValues{1} = 'Reference';
+
+for i = 1:length(simulationResults)
+    timePoints = simulationResults{i}.timePoints;
+    weights = simulationResults{i}.weight;
+    timePoints = [simulationResults{i}.individual.age timePoints];   
+    weights = [simulationResults{i}.individual.weight; weights];
+    legendValues{i+1} = simulationResults{i}.individual.name;
+    plot(timePoints/30.4, weights, 'linewidth', 3);
+end
 
 xlabel('Age [months]', 'FontSize',15,'FontName', 'Arial');
 ylabel('Weight [g]', 'FontSize',15,'FontName', 'Arial')
 ylim([0 11000])
 xlim([timePoints(1) timePoints(end)+5]/30.4)
 legend(legendValues, 'location', 'nw');
-
+legend boxoff
 
 set(gca,'FontSize',15,'FontName', 'Arial')   
 hold off
