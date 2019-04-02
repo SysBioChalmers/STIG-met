@@ -4,10 +4,11 @@
 load('../fbaModel/genericHuman2.mat')
 addpath('..')
 addpath('../sourcecode')
+    
 
 labels = {
-'glucose[s]'    
-'O2[s]'
+'glucose[Extracellular]'    
+'O2[Extracellular]'
 };
 
 model.foodRxns = getBounds(model, labels);
@@ -47,8 +48,8 @@ printFluxesAvlant(model, solution.x)
 %The purpose of this function is to estimate the kcal/ATP ratio
 %Using kcal/g of fat (9)
 labels = {
-'palmitate[s]'    
-'O2[s]'
+'palmitate[Extracellular]'    
+'O2[Extracellular]'
 };
 
 model.foodRxns = getBounds(model, labels);
