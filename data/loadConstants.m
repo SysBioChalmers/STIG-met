@@ -10,7 +10,7 @@ function constStruct = loadConstants()
 %
 %   Avlant Nilsson, 2016-05-17
 %   
-    constStruct.ATPConvertionConstant = 28.1250;
+    constStruct.ATPConvertionConstant = (22.8571 + 20.7806)/2;
     constStruct.proteinLeanFactor = 1/(1-0.80);%5 = 1/(1-HF);
     constStruct.milkDensity = 1; %kg/l
 end
