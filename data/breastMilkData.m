@@ -12,7 +12,7 @@ function [result, labels]= breastMilkData(weight, day, compartment)
 %   Avlant Nilsson, 2016-05-17
 %    
     if nargin == 2
-        compartment = 's';
+        compartment = 'Extracellular';
     end
 
     [Carb CarbLab] = breastMilkCarbs(weight, day);
