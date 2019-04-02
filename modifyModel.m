@@ -4,8 +4,9 @@
 
 %load Raven Model
 addpath('sourceCode')
-model = importExcelModel('fbaModel/HMRdatabase2_00.xlsx');
+load('fbaModel/humanGEM.mat')
+model = ihuman;
 model = setupModel(model);
 
-%Overwrite raven model
+%Overwrite old model
 save('fbaModel/genericHuman2', 'model')

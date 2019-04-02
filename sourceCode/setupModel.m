@@ -16,22 +16,12 @@ function model = setupModel(model)
     
     %turn of HCO3 excretion
     model = removeRxns(model, {'HMR_9078', 'HMR_9079'}, true);
-    
-    compartment = 's';
-    
-    model = createConsistentReactionDirection(model);
-    
-    model = removeDuplicateReactions(model);
         
-    model = addFatExchange(model, compartment, 'Fat Uptake');
-    
-    model = removeDuplicateReactions(model);
+%    model = removeDuplicateReactions(model);
     
     %exchange rxns
     [exchangeRxns,exchangeRxnsIndexes] = getExchangeRxns(model,'both');
-    model.exchangeRxns = exchangeRxnsIndexes;
-    
-    model = createConsistentReactionDirection(model);    
+    model.exchangeRxns = exchangeRxnsIndexes; 
     
     
     
