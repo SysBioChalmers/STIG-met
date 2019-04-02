@@ -22,7 +22,7 @@ function model = setupModel(model)
     end    
     
     %turn of NH3 excretion
-    model = removeRxns(model, 'HMR_9073', true);
+    model = removeRxns(model, {'HMR_9073', 'EX_nh4'}, true);
     
     %turn of HCO3 excretion
     model = removeRxns(model, {'HMR_9078', 'HMR_9079'}, true);
@@ -62,21 +62,21 @@ function model = setupModel(model)
     model=addRxns(model,lactRxn,3,'c',true); 
     
     %Add fat mass
-    lactRxn = createRXNStuct(model, 'human_fatmass', '3.49 human_TGPool[c] <=> biomassFat[c]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_fatmass', '3.49 human_TGPool[c] <=> biomassFat[c]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true);     
     
     %Add transport reactions
-    lactRxn = createRXNStuct(model, 'human_biomassTransp', 'human_biomass[c] <=> human_biomass[s]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_biomassTransp', 'human_biomass[c] <=> human_biomass[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
     lactRxn = createRXNStuct(model, 'human_biomassExport', 'human_biomass[s] =>', 0, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_fatmassTransp', 'biomassFat[c] <=> biomassFat[s]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_fatmassTransp', 'biomassFat[c] <=> biomassFat[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_fatmassExport', 'biomassFat[s] <=>', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_fatmassExport', 'biomassFat[s] <=>', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_leanmassTransp', 'biomassLean[c] <=> biomassLean[s]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_leanmassTransp', 'biomassLean[c] <=> biomassLean[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_leanmassExport', 'biomassLean[s] <=>', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_leanmassExport', 'biomassLean[s] <=>', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
 		
 		
