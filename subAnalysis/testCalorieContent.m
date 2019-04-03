@@ -3,6 +3,8 @@ addpath('..')
 addpath('../data')
 addpath('../sourcecode')
 
+global constants
+constants = loadConstants();
 
 weight = 3600/1000;
 
@@ -13,7 +15,7 @@ for i = 1:length(timePoints)
     approxMilk = 1;
     [food foodLabels]= breastMilkData(approxMilk, timePoints(i));
     foodRxns = getBounds(model, foodLabels);
-    approxValue = 100;
+    approxValue = 1000;
 
     influxValues = food(foodRxns ~= -1);
     reactionNumbers = foodRxns(foodRxns ~= -1);
@@ -29,7 +31,7 @@ for i = 1:length(timePoints)
     model = setParam(model, 'lb', objectiveFunction, 0);
     model = setParam(model, 'ub', objectiveFunction, 1000);    
 
-    %solution = solveLP(model, 1);
+    %solution = solveLinMin(model, 1);
     solution = solveLin(model);
     values = solution.x(model.exchangeRxns);
     
@@ -39,7 +41,8 @@ end
 clf
 hold all
 
-plot(timePoints, results(:,1) * 26.72, 'o--')
+plot(timePoints, results(:,1) * constants.ATPConvertionConstant, 'o--')
+
 
 hold off
 
