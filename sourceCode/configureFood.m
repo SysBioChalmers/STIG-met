@@ -22,7 +22,7 @@ global constants
     milkModel = makeMilkModel(modelFile, 1);
     
     %Get the names of the metabolites and the coresponding rxns
-    [food, foodLabels] = breastMilkData(1, 1, 'Extracellular');
+    [food, foodLabels] = breastMilkData(1, 1, 's');
     foodRxns = getBounds(model, foodLabels);
 
     foodModelFlux = zeros(length(timePoints), length(foodRxns));

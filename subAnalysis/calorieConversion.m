@@ -7,8 +7,8 @@ addpath('../sourcecode')
     
 
 labels = {
-'glucose[Extracellular]'    
-'O2[Extracellular]'
+'glucose[s]'    
+'O2[s]'
 };
 
 model.foodRxns = getBounds(model, labels);
@@ -48,8 +48,8 @@ printFluxesAvlant(model, solution.x)
 %The purpose of this function is to estimate the kcal/ATP ratio
 %Using kcal/g of fat (9)
 labels = {
-'palmitate[Extracellular]'    
-'O2[Extracellular]'
+'palmitate[s]'    
+'O2[s]'
 };
 
 model.foodRxns = getBounds(model, labels);

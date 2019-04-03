@@ -22,7 +22,7 @@ function model = setupModel(model)
     end    
     
     %turn of NH3 excretion
-    model = removeRxns(model, {'HMR_9073', 'EX_nh4'}, true);
+    model = removeRxns(model, {'HMR_9073', 'EX_nh4[e]'}, true);
     
     %turn of HCO3 excretion
     model = removeRxns(model, {'HMR_9078', 'HMR_9079'}, true);
@@ -68,27 +68,17 @@ function model = setupModel(model)
     %Add transport reactions
     lactRxn = createRXNStuct(model, 'human_biomassTransp', 'human_biomass[c] <=> human_biomass[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_biomassExport', 'human_biomass[s] =>', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_biomassExport', 'human_biomass[s] => human_biomass[x]', 0, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
     lactRxn = createRXNStuct(model, 'human_fatmassTransp', 'biomassFat[c] <=> biomassFat[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_fatmassExport', 'biomassFat[s] <=>', -1000, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_fatmassExport', 'biomassFat[s] <=> biomassFat[x]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
     lactRxn = createRXNStuct(model, 'human_leanmassTransp', 'biomassLean[c] <=> biomassLean[s]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-    lactRxn = createRXNStuct(model, 'human_leanmassExport', 'biomassLean[s] <=>', -1000, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_leanmassExport', 'biomassLean[s] <=> biomassLean[x]', -1000, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true); 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-    
-    
+		   
     %Make boundary imbalanced to allow uptake
     [~,boundCompInd] = ismember('x',model.comps);
     boundMets = (model.metComps == boundCompInd);
@@ -98,8 +88,8 @@ function model = setupModel(model)
     end
 
     %Fix P/O ratio
-    model = configureSMatrix(model, -3, 'HMR_6916', 'H+[Mitochondria]');
-    model = configureSMatrix(model, 3, 'HMR_6916', 'H+[Inner mitochondria]');
+    model = configureSMatrix(model, -3, 'HMR_6916', 'H+[m]');
+    model = configureSMatrix(model, 3, 'HMR_6916', 'H+[i]');
 
     %Remove leaky Complex IV
     model = removeRxns(model, 'CYOOm3i', true);
