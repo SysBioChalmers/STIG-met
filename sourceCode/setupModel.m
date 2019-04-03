@@ -25,8 +25,12 @@ function model = setupModel(model)
     model = removeRxns(model, {'HMR_9073', 'EX_nh4[e]'}, true);
     
     %turn of HCO3 excretion
-    model = removeRxns(model, {'HMR_9078', 'HMR_9079'}, true);
+    model = removeRxns(model, {'HMR_9078', 'HMR_9079', 'EX_h2co3[e]'}, true);
         
+    %block error prone pool reactions
+    model.ub(ismember(model.subSystems, 'Pool reactions')) = 0;
+    model.lb(ismember(model.subSystems, 'Pool reactions')) = 0;
+    
 %    model = removeDuplicateReactions(model);
     
     %Add maintanance reaction
