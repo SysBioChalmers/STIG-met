@@ -10,7 +10,7 @@ function metNames = modifyMetNames(modelMod)
 %
     metNames = modelMod.metNames;
     for i=1:length(metNames)
-        metNames{i} = [metNames{i} '[' modelMod.compNames{modelMod.metComps(i)} ']'];
+        metNames{i} = [metNames{i} '[' modelMod.comps{modelMod.metComps(i)} ']'];
     end
 end
 
