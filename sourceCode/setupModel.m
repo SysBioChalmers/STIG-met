@@ -34,7 +34,7 @@ function model = setupModel(model)
 %    model = removeDuplicateReactions(model);
     
     %Add maintanance reaction
-    lactRxn = createRXNStuct(model, 'human_ATPMaintainance', 'ATP[c] + H2O[c] => ADP[c] + Pi[c]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_ATPMaintainance', 'ATP[c] + H2O[c] + H+[c] => ADP[c] + Pi[c]', 0, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',false);
   
     %Add protein pool reaction
@@ -50,7 +50,7 @@ function model = setupModel(model)
     model=addRxns(model,lactRxn,3,'c',true);    
     
     %Add growth maintainanance
-    lactRxn = createRXNStuct(model, 'human_GrowthMaintainance', 'ATP[c] + H2O[c] => ADP[c] + Pi[c] + human_growthMaintainance[c]', 0, 1000, 'maint');
+    lactRxn = createRXNStuct(model, 'human_GrowthMaintainance', 'ATP[c] + H2O[c] + H+[c] => ADP[c] + Pi[c] + human_growthMaintainance[c]', 0, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',true);           
     
     %Add TG pool
@@ -92,7 +92,7 @@ function model = setupModel(model)
     end
 
     %Fix P/O ratio
-    model = configureSMatrix(model, -3, 'HMR_6916', 'H+[m]');
+    model = configureSMatrix(model, -2, 'HMR_6916', 'H+[m]');
     model = configureSMatrix(model, 3, 'HMR_6916', 'H+[i]');
 
     %Remove leaky Complex IV
