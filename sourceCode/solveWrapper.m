@@ -13,8 +13,8 @@ function solution = solveWrapper(model, verbose, parsimonious)
 %   Avlant Nilsson, 2016-05-17
 %    
     if parsimonious
-        solution = solveLinMin(model, verbose);
+        solution = solveLP(model, 1);
     else
-        solution = solveLin(model, verbose);
+        solution = solveLP(model);
     end   
 end
