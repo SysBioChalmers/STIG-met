@@ -6,7 +6,7 @@ addpath('..')
 addpath('../sourcecode')
     
 labels = {
-'glucose[Extracellular]'    
+'glucose[s]'    
 };
 
 approxValue = 1000;

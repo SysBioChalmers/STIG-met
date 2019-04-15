@@ -105,9 +105,9 @@ function model = setupModel(model)
     model = removeRxns(model, {'HMR_0153', 'HMR_4459'}, true);   
     
     %Remove reversibility of FAD consuming reactions
-    model.lb(findIndex(model.rxns, 'r0701')) = 0;
+    %model.lb(findIndex(model.rxns, 'r0701')) = 0;
     model.lb(findIndex(model.rxns, 'RE1519X')) = 0;
-    model.lb(findIndex(model.rxns, 'HMR_6911')) = 0;
+    %model.lb(findIndex(model.rxns, 'HMR_6911')) = 0;
     model.lb(findIndex(model.rxns, 'HMR_3212')) = 0;
     
     %exchange rxns
