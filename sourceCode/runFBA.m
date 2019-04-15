@@ -59,7 +59,7 @@ function FBASolution = runFBA(model, rxnIndx, metabolitesIn, maintenance, growth
     solution = solveWrapper(model, false, parsimonious);
     
     
-    if length(solution.x) ~= 1
+    if length(solution.x) > 1
         FBASolution = formateResult(solution, catabolism, fatIndex, leanIndex);   
     else
         %Try burning fat instead
@@ -72,7 +72,7 @@ function FBASolution = runFBA(model, rxnIndx, metabolitesIn, maintenance, growth
     if constrainedFluxes.level<1
         model = setupBottleneck(model, solution, constrainedFluxes);
         solution = solveWrapper(model, false, parsimonious);
-        if length(solution.x) == 1
+        if length(solution.x) <= 1
             model = setupCatabolism(model, catbolismFunction, catabolismSource);
             solution = solveWrapper(model, false, parsimonious);
             catabolism = 1;
