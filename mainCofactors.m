@@ -24,6 +24,8 @@ cofactorFile = {
 startLimitationSimulation = 5;
 simulationLength = 180;
 
+foodModel = configureFood(model, 'data/milkModel.txt', 1, 180);
+
 individual{1} = createIndividual('Healthy Boy', true, 0, 3346, 0.1084*3346, 5.5, 1.6, 59, 5, activityModel, (1-0.07), fatModel);
 simSettings = configureSimulation(model, simulationLength, 1, false);
 simulationResults{1} = runSimulation(individual{1}, simSettings, foodModel);
@@ -51,6 +53,22 @@ plotResults(simulationResults, plotCommand, simSettings, plotSettings, reference
 %%
 figure
 hold all
+%Reference data
+childData = referenceData.weight;
+time = childData(:,1)/30.4;
+childData = 1000 * childData(:,2:end);
+scaledData = childData./childData(:,3);
+
+greyColor = [0.5 0.5 0.5];
+%greyColor2 = [0.6 0.6 0.6];
+
+xvals = [time; flip(time)];
+yvals = [scaledData(:, 1); flip(scaledData(:, 5))];
+fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3)
+
+yvals = [scaledData(:, 2); flip(scaledData(:, 4))];
+fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
+
 orderOfPlot = 1+[4 2 1 3];
 for i = 1:4
      simulationResults{orderOfPlot(i)}.weight(end)
@@ -63,3 +81,8 @@ ylabel('Relative weight', 'FontSize',15,'FontName', 'Arial')
 ylim([0.85 1])
 xlim([0 6])
 set(gca,'FontSize',15,'FontName', 'Arial')   
+
+
+
+
+
