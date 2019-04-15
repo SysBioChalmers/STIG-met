@@ -92,16 +92,16 @@ childData = referenceData.weight;
 time = childData(:,1)/30.4;
 childData(:,2:end) = 1000 * childData(:,2:end);
 
-greyColor = [0.5 0.5 0.5];
+grayColor = [0.5 0.5 0.5];
 %greyColor2 = [0.6 0.6 0.6];
 
 xvals = [time; flip(time)];
 yvals = [childData(:, 2); flip(childData(:, 6))];
-fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3)
+fill(xvals, yvals, grayColor, 'edgecolor','none', 'FaceAlpha', 0.3)
 
 yvals = [childData(:, 3); flip(childData(:, 5))];
-fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
-plot(time, childData(:, 4), 'Color', greyColor, 'linewidth', 2, 'HandleVisibility','off')
+fill(xvals, yvals, grayColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
+plot(time, childData(:, 4), 'Color', grayColor, 'linewidth', 2, 'HandleVisibility','off')
 
 %Plot data
 legendValues{1} = 'Reference';
@@ -568,8 +568,9 @@ if simSettings.parsimonious == true
         subCount(emptySubsystems) = [];
         nonEmptySystems = allSubsystems(not(emptySubsystems));
         normalizationMatrix = repmat(max(subsystemFlux)', 1,length(timePoints));
-        clustergram(subsystemFlux'./normalizationMatrix, 'RowLabels', nonEmptySystems, 'ColumnLabels', timePoints, 'Colormap', redbluecmap, 'Cluster', 1, 'Symmetric', false)
-
+        CGObject = clustergram(subsystemFlux'./normalizationMatrix, 'RowLabels', nonEmptySystems, 'ColumnLabels', timePoints, 'Colormap', redbluecmap, 'Cluster', 1, 'Symmetric', false);
+        plot(CGObject)
+        
         %plot(simulationResults{1}.timePoints, subsystemFlux(:,10))
         pieThreshold = 0.02;
         pieValues = mean(subsystemFlux);
