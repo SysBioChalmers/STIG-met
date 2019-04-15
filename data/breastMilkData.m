@@ -48,7 +48,7 @@ function [result, labels]= breastMilkData(weight, day, compartment)
         AALab        
         FALab
         MaTLab
-        MiTLab
+        %MiTLab
     ];
     
     result = [
@@ -57,7 +57,7 @@ function [result, labels]= breastMilkData(weight, day, compartment)
         AA        
         FA
         MaT
-        MiT
+        %MiT
     ];
 
     labels = strcat(labels, ['[' compartment ']']);

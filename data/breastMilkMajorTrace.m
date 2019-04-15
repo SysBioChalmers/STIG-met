@@ -17,8 +17,8 @@ function [result, labels] = breastMilkMajorTrace(weight, day)
     labels = {
         %'Cl'
         %'Na'
-        'Mg'
-        'P'
+        %'Mg'
+        %'P'
         'K'
         'Ca'
         'Zn'};
@@ -26,8 +26,8 @@ function [result, labels] = breastMilkMajorTrace(weight, day)
     labels = {
         %'chloride'
         %'Na+'
-        ''
-        ''
+        %''
+        %''
         'K+'
         'Ca2+'
         'zinc'};
@@ -36,8 +36,8 @@ function [result, labels] = breastMilkMajorTrace(weight, day)
     molWeight = [
         %35.453
         %22.989770
-        24.3050
-        30.973761
+        %24.3050
+        %30.973761
         39.0983
         40.078
         65.409
@@ -46,8 +46,8 @@ function [result, labels] = breastMilkMajorTrace(weight, day)
     data = [
         %34.1	33.8	38.3	33.4	39.3	28.6
         %32.7	24.1	24.2	13.9	10.7	11.6
-        3.2	3	2.9	2.5	2.7	3.3
-        15.9	19	17.6	15.6	13.8	13
+        %3.2	3	2.9	2.5	2.7	3.3
+        %15.9	19	17.6	15.6	13.8	13
         72.3	70.9	63.9	46.6	43.4	43.2
         29.3	31	30.4	25.7	23	26
         0.475	0.384	0.337	0.177	0.067	0.065
