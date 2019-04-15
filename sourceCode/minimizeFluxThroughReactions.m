@@ -17,6 +17,6 @@ function solution = minimizeFluxThroughReactions(model, reactions)
     newModel.c(reactions) = -1;
     newModel.c(reactions + nrOfReactions) = -1;
     
-    solution = solveLin(newModel, true);
+    solution = solveLP(newModel, 1);
     solution = solution.x(1:nrOfReactions) - solution.x((nrOfReactions+1):end);
 end

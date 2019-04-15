@@ -63,7 +63,9 @@ rank = zeros(size(testSpace,2), 1);
 improvment = zeros(size(testSpace,2), 1);
 absoluteValue = zeros(size(testSpace,2), 1);
 
-solution = solveLinMin(model, 1);
+%solution = solveLinMin(model, 1);
+solution = solveLP(model, 1);
+
 
 baseLine = -solution.f
 
@@ -79,7 +81,7 @@ while isempty(tests) == false
         affectedReactions = reactionNumbers(testSpace(:,curTest) == 1);
         bonds = tmpModel{j}.lb(affectedReactions) * increaseFactor;
         tmpModel{j} = setParam(tmpModel{j}, 'lb', affectedReactions, bonds);
-        solution = solveLin(tmpModel{j}, 1);
+        solution = solveLP(tmpModel{j});
         results(j) = -solution.f;
     end
     results/baseLine

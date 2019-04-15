@@ -38,8 +38,8 @@ results = zeros(length(fatPriority), 2);
 for i = 1:length(fatPriority)
     priorityFunction = [1 10.^fatPriority(i)];
     model = setParam(model, 'obj', objectiveFunction, priorityFunction);
-    %solution = solveLP(model, 1);
-    solution = solveLin(model);
+    solution = solveLP(model, 1);
+    %solution = solveLin(model);
     results(i,:) = solution.x(objectiveReactions);
     
 end

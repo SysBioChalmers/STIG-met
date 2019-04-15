@@ -50,8 +50,8 @@ for i = 1:length(possiblyEssensialReactions)
         tempModel.ub(currentRxn) = normFluxes(currentRxn) * valueLevels(j);
         tempModel.lb(currentRxn) = normFluxes(currentRxn) * valueLevels(j);
 
-       % solution = solveLP(model, 1);
-         solution = solveLin(tempModel);
+        solution = solveLP(tempModel);
+        %solution = solveLin(tempModel);
 
         if not(isempty(solution.f))
             FBASolution = -solution.f;

@@ -30,7 +30,7 @@ for i = 1:length(timePoints)
     model = setParam(model, 'ub', objectiveFunction, 1000);    
 
     %solution = solveLP(model, 1);
-    solution = solveLin(model);
+    solution = solveLP(model);
     values = solution.x(model.exchangeRxns);
     
     
