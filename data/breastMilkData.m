@@ -18,8 +18,8 @@ function [result, labels]= breastMilkData(weight, day, compartment)
     [Carb CarbLab] = breastMilkCarbs(weight, day);
     [AA AALab] =   breastMilkAA(weight, day);
     [FA FALab] =   breastMilkFA(weight, day);
-    [MaT MaTLab] =  breastMilkMajorTrace(weight, day);
-    [MiT MiTLab] =  breastMilkMinorTrace(weight, day);
+    %[MaT MaTLab] =  breastMilkMajorTrace(weight, day);
+    %[MiT MiTLab] =  breastMilkMinorTrace(weight, day);
     
     %Fake metabolites:
     fakeA = {    
@@ -47,8 +47,8 @@ function [result, labels]= breastMilkData(weight, day, compartment)
         CarbLab
         AALab        
         FALab
-        MaTLab
-        MiTLab
+        %MaTLab
+        %MiTLab
     ];
     
     result = [
@@ -56,8 +56,8 @@ function [result, labels]= breastMilkData(weight, day, compartment)
         Carb
         AA        
         FA
-        MaT
-        MiT
+        %MaT
+        %MiT
     ];
 
     labels = strcat(labels, ['[' compartment ']']);
