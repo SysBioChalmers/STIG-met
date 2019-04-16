@@ -62,9 +62,10 @@ scaledData = childData./childData(:,3);
 greyColor = [0.5 0.5 0.5];
 %greyColor2 = [0.6 0.6 0.6];
 
-xvals = [time; flip(time)];
 yvals = [scaledData(:, 1); flip(scaledData(:, 5))];
 fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3)
+%xvals = [time; flip(time)];
+%yvals = [scaledData(:, 1); flip(scaledData(:, 5))];
 
 yvals = [scaledData(:, 2); flip(scaledData(:, 4))];
 fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
