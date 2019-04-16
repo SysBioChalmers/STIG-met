@@ -51,7 +51,7 @@ for i = 2:length(individual)
 end
 
 %plotCommand = 'growth|delta|diference|fatmass|gas|energy|xFluxes|subsystems|intFluxes|foodUtilization|nitrogen|fatfix';
-plotCommand = 'growth|zscore|delta';
+plotCommand = 'growth|zscore';
 plotResults(simulationResults, plotCommand, simSettings, plotSettings, referenceData)
 
 %%
@@ -66,7 +66,7 @@ scaledData = childData./childData(:,3);
 greyColor = [0.5 0.5 0.5];
 %greyColor2 = [0.6 0.6 0.6];
 
-%xvals = [time; flip(time)];
+xvals = [time; flip(time)];
 %yvals = [scaledData(:, 1); flip(scaledData(:, 5))];
 %fill(xvals, yvals, greyColor, 'edgecolor','none', 'FaceAlpha', 0.3, 'HandleVisibility','off')
 
