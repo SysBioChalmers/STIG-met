@@ -18,7 +18,7 @@ individual{1} = createIndividual('Healthy Boy', true, 0, 3346, 0.1084*3346, 5.5,
 
 simSettings = configureSimulation(model, 180, 1, false);
 
-foodModel = configureFood(model, 'data/milkModel.txt', 1, 180, 0);
+foodModel = configureFood(model, 'data/milkModel.txt', 1, 180);
 
 amplitude = 0.5;
 nrOfOcilations = 5; 
