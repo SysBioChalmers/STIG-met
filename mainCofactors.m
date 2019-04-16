@@ -81,7 +81,7 @@ for i = 1:4
      disp(simulationResults{orderOfPlot(i)}.weight(end))
      timepoints = startLimitationSimulation;
      timepoints = [timepoints simulationResults{orderOfPlot(i)}.timePoints];
-     weights = simulationResults{2}.individual.weight;
+     weights = simulationResults{i}.individual.weight;
      weights = [weights; simulationResults{orderOfPlot(i)}.weight];
      plot(timepoints/30.4, weights./referenceWeight, 'linewidth', 3)
 end
