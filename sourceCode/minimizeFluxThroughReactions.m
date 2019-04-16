@@ -7,7 +7,8 @@ function solution = minimizeFluxThroughReactions(model, reactions)
     newModel.lb = vertcat(model.lb,  -model.ub);
     newModel.ub = vertcat(model.ub, -model.lb);
     newModel.c = vertcat(model.c, -model.c);
-
+    newModel.rev = zeros(nrOfReactions*2,1);
+    
     %Set Lower Bound
     newModel.lb(newModel.lb<0) = 0;
     newModel.ub(newModel.ub<0) = 0;
@@ -17,6 +18,6 @@ function solution = minimizeFluxThroughReactions(model, reactions)
     newModel.c(reactions) = -1;
     newModel.c(reactions + nrOfReactions) = -1;
     
-    solution = solveLP(newModel, 1);
+    solution = solveLP(newModel);
     solution = solution.x(1:nrOfReactions) - solution.x((nrOfReactions+1):end);
 end
