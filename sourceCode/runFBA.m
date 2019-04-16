@@ -92,14 +92,16 @@ end
     
 
 function model = setupBottleneck(model, solution, constrainedFluxes)
+    tolerance = 10^-6;
+
     %guarantee same objective solution
     cofactorReactions = constrainedFluxes.rxns;
     
     %this assumes that there is only one flux in the objective function
     objectiveFunctionVal = solution.x(model.c~=0) * model.c(model.c~=0);
     tmpModel = model;
-    tmpModel = setParam(tmpModel, 'lb', tmpModel.c ~= 0, objectiveFunctionVal);
-    tmpModel = setParam(tmpModel, 'ub', tmpModel.c ~= 0, objectiveFunctionVal); 
+    tmpModel = setParam(tmpModel, 'lb', tmpModel.c ~= 0, objectiveFunctionVal-tolerance);
+    tmpModel = setParam(tmpModel, 'ub', tmpModel.c ~= 0, objectiveFunctionVal+tolerance); 
     minimalSolution = minimizeFluxThroughReactions(tmpModel, cofactorReactions);
     
     level = constrainedFluxes.level;
