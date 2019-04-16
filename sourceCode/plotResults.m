@@ -384,7 +384,6 @@ end
 
 function plotHeightZscore(simulationResults, referenceData, simSettings)
     legendValues = [];
-         print('test')
     hold all
     timePoints = simulationResults{1}.timePoints;
     approxHeight = getHeightEstimates(simulationResults);  
