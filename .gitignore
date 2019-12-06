@@ -1,3 +1,4 @@
 
 *.asv
 test.ps
+.DS_Store
