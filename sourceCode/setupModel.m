@@ -21,18 +21,6 @@ function model = setupModel(model)
         model.mets{i} = ['m' num2str(i)];
     end    
     
-    %turn of NH3 excretion
-    model = removeRxns(model, {'HMR_9073', 'EX_nh4[e]'}, true);
-    
-    %turn of HCO3 excretion
-    model = removeRxns(model, {'HMR_9078', 'HMR_9079', 'EX_h2co3[e]'}, true);
-        
-    %block error prone pool reactions
-    model.ub(ismember(model.subSystems, 'Pool reactions')) = 0;
-    model.lb(ismember(model.subSystems, 'Pool reactions')) = 0;
-    
-%    model = removeDuplicateReactions(model);
-    
     %Add maintanance reaction
     lactRxn = createRXNStuct(model, 'human_ATPMaintainance', 'ATP[c] + H2O[c] + H+[c] => ADP[c] + Pi[c]', 0, 1000, 'maint');
     model=addRxns(model,lactRxn,3,'c',false);
@@ -90,30 +78,10 @@ function model = setupModel(model)
     if isfield(model,'unconstrained')
         model = rmfield(model,'unconstrained');
     end
-
-    %Fix P/O ratio
-    model = configureSMatrix(model, -2, 'HMR_6916', 'H+[m]');
-    model = configureSMatrix(model, 3, 'HMR_6916', 'H+[i]');
-
-    %Remove leaky Complex IV
-    model = removeRxns(model, 'CYOOm3i', true);
-    
-    %Prevent free PI
-    model = removeRxns(model, {'HMR_6330', 'HMR_4865', 'HMR_4862', 'HMR_3971', 'HMR_4940', 'HMR_6331', 'HMR_4870'}, true);
-    
-    %Prevent ATP from propionate synthesis
-    model = removeRxns(model, {'HMR_0153', 'HMR_4459'}, true);   
-    
-    %Remove reversibility of FAD consuming reactions
-    %model.lb(findIndex(model.rxns, 'r0701')) = 0;
-    model.lb(findIndex(model.rxns, 'RE1519X')) = 0;
-    %model.lb(findIndex(model.rxns, 'HMR_6911')) = 0;
-    model.lb(findIndex(model.rxns, 'HMR_3212')) = 0;
     
     %exchange rxns
     [exchangeRxns,exchangeRxnsIndexes] = getExchangeRxns(model,'both');
     model.exchangeRxns = exchangeRxnsIndexes; 
-    
 
 end
 
