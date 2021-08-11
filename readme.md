@@ -25,7 +25,7 @@ the understanding of the mechanisms underlying stunting.
 
 - Pubmed ID: 28649430
 
-- Last update: 2017-10-03
+- Last update: 2021-08-11
 
 
 
@@ -38,8 +38,8 @@ This repository is administered by name @avlant, Division of Systems and Synthet
 ### Required Software:
 
 * *_PROGRAMMING LANGUAGE/Version_*  (e.g.):
-  * You need a functional Matlab installation of **Matlab_R_2015_b** (MATLAB 7.3 and higher)
-  * The [RAVEN](https://github.com/SysBioChalmers/RAVEN) toolbox for MATLAB. Add the directory to your Matlab path, instructions [here](https://se.mathworks.com/help/matlab/ref/addpath.html?requestedDomain=www.mathworks.com)
+  * You need a functional Matlab installation of **Matlab_R_2015_b**
+  * The [RAVEN](https://github.com/SysBioChalmers/RAVEN) toolbox for MATLAB. Installation instructions [here](https://github.com/SysBioChalmers/RAVEN/wiki/Installation#installation)
 
 ### Run
 To reproduce figure 1 run main.m. For other figures run main[name of simulation].m

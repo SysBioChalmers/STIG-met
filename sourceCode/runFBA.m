@@ -43,10 +43,10 @@ function FBASolution = runFBA(model, rxnIndx, metabolitesIn, maintenance, growth
     approxValue = 1000;
     
     %set up model
-    model = setParam(model, 'lb', model.exchangeRxns, 0);
-    model = setParam(model, 'ub', model.exchangeRxns, approxValue);
-    model = setParam(model, 'lb', rxnIndx, -metabolitesIn);
-    model = setParam(model, 'ub', rxnIndx, approxValue);
+    model = setParam(model, 'lb', model.exchangeRxns, zeros(length(model.exchangeRxns),1));
+    model = setParam(model, 'ub', model.exchangeRxns, approxValue * ones(length(model.exchangeRxns),1));
+    model = setParam(model, 'lb', rxnIndx, -metabolitesIn');
+    model = setParam(model, 'ub', rxnIndx, approxValue * ones(length(rxnIndx),1));
 
     model = setParam(model, 'obj', objectiveFunction, 1);
     
